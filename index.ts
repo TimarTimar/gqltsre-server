@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers/index");
 const { MONGODB } = require("./config/keys");
-//var cors = require("cors");
+var cors = require("cors");
 
 const bootstrap = async () => {
 	try {
@@ -16,6 +16,8 @@ const bootstrap = async () => {
 		console.log("mongo connected");
 		const pubsub = new PubSub();
 		const app = express();
+
+		app.use(cors());
 
 		/*var corsOptions = {
 			origin: "https://awesome-neumann-6b754b.netlify.app/",
