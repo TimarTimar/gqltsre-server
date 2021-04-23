@@ -16,7 +16,12 @@ const bootstrap = async () => {
 		console.log("mongo connected");
 		const pubsub = new PubSub();
 		const app = express();
-		app.use(cors());
+
+		var corsOptions = {
+			origin: "https://awesome-neumann-6b754b.netlify.app/",
+			credentials: true,
+		};
+		app.use(cors(corsOptions));
 
 		const PORT = process.env.PORT || 5000;
 
