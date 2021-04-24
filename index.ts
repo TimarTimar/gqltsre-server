@@ -16,14 +16,13 @@ const bootstrap = async () => {
 		console.log("mongo connected");
 		const pubsub = new PubSub();
 		const app = express();
-
-		app.use(cors());
-		app.options("*", cors());
-
-		const corsOptions = {
-			origin: true,
-			credentials: true,
-		};
+		app.set("trust proxy", 1);
+		app.use(
+			cors({
+				origin: "https://awesome-neumann-6b754b.netlify.app/",
+				credentials: true,
+			})
+		);
 
 		const PORT = process.env.PORT || 5000;
 
@@ -39,7 +38,7 @@ const bootstrap = async () => {
 			context: ({ req }) => ({ req, pubsub }),
 		});
 
-		server.applyMiddleware({ app, cors: corsOptions });
+		server.applyMiddleware({ app, cors: false });
 	} catch (e) {
 		console.log(e);
 	}
