@@ -17,6 +17,8 @@ const bootstrap = async () => {
 		const pubsub = new PubSub();
 		const app = express();
 
+		app.use(cors());
+
 		const corsOptions = {
 			origin: "https://awesome-neumann-6b754b.netlify.app/",
 			credentials: true,
