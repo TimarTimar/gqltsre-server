@@ -147,6 +147,7 @@ module.exports = {
 					currency: "usd",
 					source: myToken[0],
 					description: "$5 for 5 credits",
+					Authorization: `Bearer ${keys.stripeSecretKey}`,
 				});
 
 				const editedUser = {
