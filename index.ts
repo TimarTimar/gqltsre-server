@@ -36,6 +36,7 @@ const bootstrap = async () => {
 			resolvers,
 			playground: true,
 			context: ({ req }) => ({ req, pubsub }),
+			introspection: true,
 		});
 
 		server.applyMiddleware({ app, cors: false });
