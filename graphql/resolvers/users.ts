@@ -5,8 +5,7 @@ import { UserSchemaTypes } from "../../types/SchemaTypes/UserSchemaTypes";
 const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
-const Stripe = require("stripe");
-const stripe = Stripe(keys.stripeSecretKey);
+const stripe = require("stripe")(keys.stripeSecretKey);
 const jwt = require("jsonwebtoken");
 const { UserInputError } = require("apollo-server");
 
@@ -143,13 +142,18 @@ module.exports = {
 
 			if (user) {
 				console.log(token, 22);
-				const charge = await stripe.charges.create({
-					amount: 5000,
-					currency: "usd",
-					source: myToken[0],
-					description: "$5 for 5 credits",
-					api_key: keys.stripeSecretKey,
-				});
+
+				try {
+					const charge = await stripe.charges.create({
+						amount: 5000,
+						currency: "usd",
+						source: myToken[0],
+						description: "$5 for 5 credits",
+					});
+					return charge;
+				} catch (e) {
+					console.log(e);
+				}
 
 				const editedUser = {
 					credits: newCredits,
