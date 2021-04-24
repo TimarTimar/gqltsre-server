@@ -18,6 +18,7 @@ const bootstrap = async () => {
 		const app = express();
 
 		app.use(cors());
+		app.options("*", cors());
 
 		const corsOptions = {
 			origin: true,
