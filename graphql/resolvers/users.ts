@@ -150,7 +150,9 @@ module.exports = {
 						source: myToken[0],
 						description: "$5 for 5 credits",
 					});
-					return charge;
+					if (charge) {
+						console.log(charge, "charge");
+					}
 				} catch (e) {
 					console.log(e);
 				}
