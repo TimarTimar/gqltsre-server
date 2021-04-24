@@ -5,7 +5,8 @@ import { UserSchemaTypes } from "../../types/SchemaTypes/UserSchemaTypes";
 const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
-const stripe = require("stripe")(keys.stripeSecretKey);
+const Stripe = require("stripe");
+const stripe = Stripe(keys.stripeSecretKey);
 const jwt = require("jsonwebtoken");
 const { UserInputError } = require("apollo-server");
 
@@ -147,7 +148,7 @@ module.exports = {
 					currency: "usd",
 					source: myToken[0],
 					description: "$5 for 5 credits",
-					Authorization: `Bearer ${keys.stripeSecretKey}`,
+					api_key: keys.stripeSecretKey,
 				});
 
 				const editedUser = {
