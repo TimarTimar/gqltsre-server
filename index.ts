@@ -17,13 +17,10 @@ const bootstrap = async () => {
 		const pubsub = new PubSub();
 		const app = express();
 
-		app.use(cors());
-
-		/*var corsOptions = {
+		const corsOptions = {
 			origin: "https://awesome-neumann-6b754b.netlify.app/",
 			credentials: true,
 		};
-		app.use(cors(corsOptions));*/
 
 		const PORT = process.env.PORT || 5000;
 
@@ -39,7 +36,7 @@ const bootstrap = async () => {
 			context: ({ req }) => ({ req, pubsub }),
 		});
 
-		server.applyMiddleware({ app });
+		server.applyMiddleware({ app, cors: corsOptions });
 	} catch (e) {
 		console.log(e);
 	}
