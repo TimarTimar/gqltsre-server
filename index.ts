@@ -19,7 +19,7 @@ const bootstrap = async () => {
 		app.set("trust proxy", 1);
 		app.use(
 			cors({
-				origin: "https://awesome-neumann-6b754b.netlify.app/",
+				origin: "https://awesome-neumann-6b754b.netlify.app",
 				credentials: true,
 			})
 		);
