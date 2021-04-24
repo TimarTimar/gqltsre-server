@@ -20,7 +20,7 @@ const bootstrap = async () => {
 		app.use(cors());
 
 		const corsOptions = {
-			origin: "https://awesome-neumann-6b754b.netlify.app/",
+			origin: true,
 			credentials: true,
 		};
 
