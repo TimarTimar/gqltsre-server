@@ -15,6 +15,7 @@ module.exports = (survey: SurveySchemaTypes) => {
                 <div>
                     <a href="${keys.redirectDomain}/api/surveys/${survey._id}/no">No</a>
                 </div>
+                <p>You see this email because somebody added you as a recipient for a survey.</p>
             </div>
         </body>
     </html>
