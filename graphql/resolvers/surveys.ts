@@ -250,7 +250,7 @@ module.exports = {
 				title,
 				subject,
 				body,
-				sent: "sent",
+				state: "sent",
 				recipients: formattedRecipients,
 				dateSent: new Date().toISOString(),
 			};
